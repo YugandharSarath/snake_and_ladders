@@ -1,7 +1,7 @@
 
 ---
 
-## 🐍 **Snakes and Ladders Game Visualizer – React Project**
+## 🐍 **Snakes and Ladders Game Visualizer**
 
 ### 🎯 **Goal**
 
