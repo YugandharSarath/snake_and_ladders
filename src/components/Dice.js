@@ -1,20 +1,9 @@
 import React from "react";
 
-interface DiceProps {
-  value: number;
-  onRoll: () => void;
-  disabled: boolean;
-}
-
-const Dice: React.FC<DiceProps> = ({ value, onRoll, disabled }) => {
+export default function Dice({ value, onRoll, disabled }) {
   return (
     <div style={{ marginTop: "1rem", textAlign: "center" }}>
-      <div
-        style={{
-          fontSize: "2rem",
-          marginBottom: "0.5rem",
-        }}
-      >
+      <div style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>
         🎲 {value}
       </div>
       <button
@@ -26,6 +15,4 @@ const Dice: React.FC<DiceProps> = ({ value, onRoll, disabled }) => {
       </button>
     </div>
   );
-};
-
-export default Dice;
+}

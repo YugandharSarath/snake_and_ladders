@@ -6,11 +6,7 @@ import {
   snakesAndLaddersMap,
 } from "../utils/snakesAndLaddersMap";
 
-interface BoardProps {
-  playerPosition: number;
-}
-
-const Board: React.FC<BoardProps> = ({ playerPosition }) => {
+export default function Board({ playerPosition }) {
   const cells = [];
 
   for (let row = 9; row >= 0; row--) {
@@ -37,6 +33,4 @@ const Board: React.FC<BoardProps> = ({ playerPosition }) => {
   }
 
   return <div>{cells}</div>;
-};
-
-export default Board;
+}

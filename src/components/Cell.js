@@ -1,21 +1,7 @@
 import React from "react";
 import "./Cell.css";
 
-interface CellProps {
-  number: number;
-  isPlayer: boolean;
-  isSnake: boolean;
-  isLadder: boolean;
-  moveTo?: number;
-}
-
-const Cell: React.FC<CellProps> = ({
-  number,
-  isPlayer,
-  isSnake,
-  isLadder,
-  moveTo,
-}) => {
+export default function Cell({ number, isPlayer, isSnake, isLadder, moveTo }) {
   let className = "cell";
   if (isSnake) className += " snake";
   else if (isLadder) className += " ladder";
@@ -28,6 +14,4 @@ const Cell: React.FC<CellProps> = ({
       {isPlayer && <div className="player">🎲</div>}
     </div>
   );
-};
-
-export default Cell;
+}

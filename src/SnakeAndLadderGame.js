@@ -4,9 +4,9 @@ import Dice from "./components/Dice";
 import { snakesAndLaddersMap } from "./utils/snakesAndLaddersMap";
 import "./App.css";
 
-const App: React.FC = () => {
+export default function SnakeAndLadderGame() {
   const [position, setPosition] = useState(1);
-  const [diceValue, setDiceValue] = useState<number | null>(null);
+  const [diceValue, setDiceValue] = useState(null);
   const [message, setMessage] = useState("");
 
   const rollDice = () => {
@@ -33,12 +33,10 @@ const App: React.FC = () => {
     <div className="app">
       <h1>🎲 Snakes and Ladders</h1>
       <Board playerPosition={position} />
-      <Dice value={diceValue} onRoll={rollDice} />
+      <Dice value={diceValue} onRoll={rollDice} disabled={position === 100} />
       <p>Current Position: {position}</p>
       {position === 100 && <h2>You Win! 🏆</h2>}
       {message && <p className="message">{message}</p>}
     </div>
   );
-};
-
-export default App;
+}
