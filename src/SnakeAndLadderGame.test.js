@@ -2,10 +2,10 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
 import '@testing-library/jest-dom';
-// Mock Math.random for predictable dice rolls
+
 describe('Snakes and Ladders App', () => {
   beforeEach(() => {
-    jest.spyOn(global.Math, 'random').mockReturnValue(0.5); // Always roll 4
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.5); 
   });
   afterEach(() => {
     jest.spyOn(global.Math, 'random').mockRestore();
@@ -52,9 +52,8 @@ describe('Snakes and Ladders App', () => {
     render(<App />);
     const rollButton = screen.getByTestId('roll-dice-button');
     
-    // Roll to move from 1 to 5, then 5 to 9 (which is a ladder to 31)
-    fireEvent.click(rollButton); // 1->5
-    fireEvent.click(rollButton); // 5->9->31
+    fireEvent.click(rollButton); 
+    fireEvent.click(rollButton); 
     
     expect(screen.getByTestId('game-message')).toHaveTextContent('🪜 Ladder! Climb up!');
     expect(screen.getByTestId('current-position')).toHaveTextContent('Current Position: 31');
@@ -66,11 +65,9 @@ describe('Snakes and Ladders App', () => {
   it('displays snake and ladder markers on appropriate cells', () => {
     render(<App />);
     
-    // Check for ladder markers
     expect(screen.getByTestId('ladder-marker-1')).toHaveTextContent('🪜 → 38');
     expect(screen.getByTestId('ladder-marker-9')).toHaveTextContent('🪜 → 31');
     
-    // Check for snake markers
     expect(screen.getByTestId('snake-marker-16')).toHaveTextContent('🐍 → 6');
     expect(screen.getByTestId('snake-marker-47')).toHaveTextContent('🐍 → 26');
   });
@@ -78,29 +75,21 @@ describe('Snakes and Ladders App', () => {
   it('disables roll button and shows win message when reaching 100', () => {
     render(<App />);
     
-    // Mock multiple rolls to reach near 100
-    jest.spyOn(global.Math, 'random').mockReturnValue(0.99); // Roll 6
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.99); 
     
-    // Simulate reaching position 100 by directly setting the state
-    // This would require exposing internal state or using a different approach
-    // For now, we'll test the UI elements exist
     
     const rollButton = screen.getByTestId('roll-dice-button');
-    expect(rollButton).not.toBeDisabled(); // Initially enabled
+    expect(rollButton).not.toBeDisabled(); 
   });
 
   it('prevents movement when dice roll would exceed 100', () => {
     render(<App />);
     
-    // This test would require setting up a specific game state
-    // where the player is at position 97 or higher and rolling would exceed 100
-    // Implementation depends on the specific game logic
   });
 
   it('shows board rows correctly', () => {
     render(<App />);
     
-    // Check that board rows are rendered (10 rows total)
     for (let row = 0; row <= 9; row++) {
       expect(screen.getByTestId(`board-row-${row}`)).toBeInTheDocument();
     }

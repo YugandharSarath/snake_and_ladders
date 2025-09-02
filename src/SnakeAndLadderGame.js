@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css"; // Optional, for styling
+import "./App.css"; 
 
 export default function SnakeAndLadders() {
   const snakesAndLaddersMap = {
